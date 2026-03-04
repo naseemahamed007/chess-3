@@ -24,36 +24,40 @@ st.divider()
 
 
 # Info Cards
-col1, col2, col3 = st.columns(3)
+import streamlit as st
 
-with col1:
-    st.markdown("""
-    <div class="card">
-        <h3>🏆 Tournaments</h3>
-        <p>Professional Events</p>
-    </div>
-    """, unsafe_allow_html=True)
+st.set_page_config(layout="wide")
 
-with col2:
-    st.markdown("""
-    <div class="card">
-        <h3>👥 Membership</h3>
-        <p>Join Our Academy</p>
-    </div>
-    """, unsafe_allow_html=True)
+# CSS
+with open("style.css") as f:
+    st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
-with col3:
-    st.markdown("""
-    <div class="card">
-        <h3>📞 Contact</h3>
-        <p>Get in Touch</p>
-    </div>
-    """, unsafe_allow_html=True)
 
+# Hero
+st.markdown("""
+<div class="hero">
+<h1>♟️ Nas Matrix Chess</h1>
+<p>Official Chess Organization</p>
+</div>
+""", unsafe_allow_html=True)
 
 st.divider()
 
 
+# Navigation Buttons
+col1, col2, col3 = st.columns(3)
+
+with col1:
+    if st.button("🏆 Tournaments", use_container_width=True):
+        st.switch_page("pages/2_Tournaments.py")
+
+with col2:
+    if st.button("👥 Membership", use_container_width=True):
+        st.switch_page("pages/3_Membership.py")
+
+with col3:
+    if st.button("📞 Contact", use_container_width=True):
+        st.switch_page("pages/4_Contact.py")
 # About Section
 st.markdown("""
 ## ♟️ About Us
